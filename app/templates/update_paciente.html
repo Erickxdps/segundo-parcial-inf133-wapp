@@ -6,25 +6,25 @@
     <div class="field">
         <label for="name">Nombres:</label>
         <div class="control">
-            <input type="text" id="name" name="name" required class="input" value={{ patient.name }}>
+            <input type="text" id="name" name="name" required class="input" value={{ paciente.name }}>
         </div>
     </div>
     <div class="field">
-        <label for="species">Apellidos:</label>
+        <label for="last_name">Apellidos:</label>
         <div class="control">
-            <input type="text" id="species" name="species" required class="input" value={{ patient.last_name }}>
+            <input type="text" id="last_name" name="last_name" required class="input" value={{ paciente.lastname }}>
         </div>
     </div>
     <div class="field">
         <label for="ci">CI:</label>
         <div class="control">
-            <input type="number" id="ci" name="ci" required class="input" value={{ patient.ci }}>
+            <input type="text" id="ci" name="ci" required class="input" value={{ paciente.ci }}>
         </div>
     </div>
     <div class="field">
         <label for="birth_date">Fecha de Nacimiento:</label>
         <div class="control">
-            <input type="text" id="birth_date" name="birth_date" required class="input" value= {{ patient.birth_date }}>
+            <input type="text" id="birth_date" name="birth_date" required class="input" value= {{ paciente.birth_date }}>
         </div>
     </div>
     <input type="submit" value="Guardar Cambios" class="button is-primary">

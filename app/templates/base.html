@@ -8,17 +8,17 @@
     <title>{{ title }}</title>
 </head>
 <body>
-    <h1 class="title">MVC Segundo Parcial</h1>
+    <h1 class="title">MVC Segundo Parcial aña</h1>
     {% if current_user.is_authenticated %}
     <nav class="breadcrumb" aria-label="breadcrumbs">
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
                 {% if current_user.has_role("admin") %}
-                <a class="navbar-item" href="{{ url_for('patient.create_patient') }}">
+                <a class="navbar-item" href="{{ url_for('paciente.create_paciente') }}">
                     Crear Paciente
                 </a>
                 {% endif %}
-                <a class="navbar-item" href="{{ url_for('patient.list_patients') }}">
+                <a class="navbar-item" href="{{ url_for('paciente.list_pacientes') }}">
                     Lista de Pacientes
                 </a>
                 <a class="navbar-item" href="{{ url_for('user.logout') }}">
