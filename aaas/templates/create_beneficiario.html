@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2 class="subtitle is-2">Registrar Paciente</h2>
+<h2 class="subtitle is-2">Registrar Beneficiario</h2>
 <form method="post">
     <div class="field">
-        <label for="name">Nombres:</label>
+        <label for="name">Nombre:</label>
         <div class="control">
             <input type="text" id="name" name="name" required class="input">
         </div>
     </div>
     <div class="field">
-        <label for="lastname">Apellidos:</label>
+        <label for="lastname">Apellido:</label>
         <div class="control">
             <input type="text" id="lastname" name="lastname" required class="input">
         </div>
@@ -22,9 +22,15 @@
         </div>
     </div>
     <div class="field">
-        <label for="birth_date">Fecha de Nacimiento:</label>
+        <label for="nroManzano">Numero de Manzano:</label>
         <div class="control">
-            <input type="text" id="birth_date" name="birth_date" required class="input">
+            <input type="number" id="nroManzano" name="nroManzano" required class="input">
+        </div>
+    </div>
+    <div class="field">
+        <label for="nroLote">Numero de Lote:</label>
+        <div class="control">
+            <input type="number" id="nroLote" name="nroLote" required class="input">
         </div>
     </div>
     <input type="submit" value="Registrar" class="button is-primary">

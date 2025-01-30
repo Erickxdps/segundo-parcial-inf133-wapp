@@ -1,19 +1,23 @@
 from database import db
 
-class Paciente(db.Model):
+class Beneficiario(db.Model):
     # aca se crea la tabla para los paciente 
-    __tablename__ = "pacientes"
+    __tablename__ = "beneficiarios"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     lastname = db.Column(db.String(), nullable=False)
     ci = db.Column(db.String(100), nullable=False)
-    birth_date = db.Column(db.String(100), nullable=False)
+    # nroManzano = db.Column(db.Integer, nullable=False)
+    # nroLote = db.Column(db.Integer, nullable=False)
+    asistencia = db.Column(db.Boolean, nullable=False)
     # constructor o algo asi Dx
-    def __init__(self, name, lastname, ci , birth_date):
+    def __init__(self, name, lastname, ci , nroManzano, nroLote, asistencia):
         self.name = name
         self.lastname = lastname
         self.ci = ci 
-        self.birth_date = birth_date
+        self.nroManzano = nroManzano
+        self.nroLote = nroLote
+        self.asistencia = bool(asistencia)
     # save = guardar xd
     def save(self):
         db.session.add(self)
@@ -21,21 +25,25 @@ class Paciente(db.Model):
     # get todoooo
     @staticmethod
     def get_all():
-        return Paciente.query.all()
+        return Beneficiario.query.all()
     # get pero por id
     @staticmethod
     def get_by_id(id):
-        return Paciente.query.get(id)
+        return Beneficiario.query.get(id)
     #actualizar
-    def update(self, name = None, lastname = None, ci = None , birth_date = None):
+    def update(self, name = None, lastname = None, ci = None , NroManzano = None, NroLote = None, asistencia = None):
         if name is not None:
             self.name = name
         if lastname is not None:
             self.lastname = lastname
         if ci is not None:
             self.ci = ci
-        if birth_date is not None:
-            self.birth_date = birth_date
+        if NroManzano is not None:
+            self.NroManzano = NroManzano
+        if NroLote is not None:
+            self.NroLote = NroLote
+        if asistencia is not None:
+            self.asistencia = asistencia
         db.session.commit()
     #eliminar
     def delete(self):

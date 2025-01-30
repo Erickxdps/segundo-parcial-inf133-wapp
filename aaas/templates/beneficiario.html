@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="subtitle is-2">Lista de Beneficiarios</h2>
+<div class="table-container">
+    <table class="table is-fullwidth is-striped is-hoverable">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Objetivo</th>
+                <th>Lugar</th>
+                <th>Presupuesto</th>
+                <th>Descripcion</th>
+                {% if current_user.has_role('admin') %}
+                    <th>Acciones</th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for beneficiario in beneficiarios %}
+            <tr>
+                <td>{{ beneficiario.nombre }}</td>
+                <td>{{ beneficiario.objetivo }}</td>
+                <td>{{ beneficiario.lugar }}</td>
+                <td>{{ beneficiario.presupuesto }}</td>
+                <td>{{ beneficiario.descripcion }}</td>
+            <td>
+            <!-- El formulario debe comenzar aquí para envolver correctamente el input y el botón -->
+                    <form method="POST" action="{{ url_for('beneficiario.update_asistencia', id=beneficiario.id) }}">
+                        <input type="checkbox" name="asistencia" value="1" {% if beneficiario.asistencia %}checked{% endif %}>
+                        {% if current_user.has_role('admin') %}
+                            <button type="submit" class="button is-info is-small">Guardar Cambios</button>
+                        {% endif %}
+                    </form>
+
+
+
+
+                    
+                </td>
+                {% if current_user.has_role('admin') %}
+                <td>
+                    <div class="buttons">
+                        <a href="{{ url_for('beneficiario.update_beneficiario', id=beneficiario.id) }}" class="button is-info is-small">Editar</a>
+                        <a href="{{ url_for('beneficiario.delete_beneficiario', id=beneficiario.id) }}" class="button is-danger is-small">Eliminar</a>
+                    </div>
+                </td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
